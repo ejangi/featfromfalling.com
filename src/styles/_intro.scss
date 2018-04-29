@@ -15,11 +15,22 @@
             text-align: center;
         }
 
-        @media (min-width: $screen-sm) {
+        @media (orientation : landscape) {
+            padding-top: 20%;
+            h1 {
+                margin-bottom: .8rem;
+            }
+        }
+
+        @media (min-width: $screen-sm) and (orientation : landscape) {
+            padding-top: 10%;
+        }
+
+        @media (min-width: $screen-sm) and (orientation : portrait) {
             padding-top: 20%;
         }
 
-        @media (min-width: $screen-lg) {
+        @media (min-width: $screen-lg) and (orientation : portrait) {
             padding-top: 10%;
         }
     }
