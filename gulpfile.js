@@ -94,3 +94,6 @@ gulp.task('default', function(callback) {
               'revreplace',
               callback);
 });
+
+// TO DEPLOY
+// python ghp-import.py -p ./dist/
