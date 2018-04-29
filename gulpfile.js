@@ -49,6 +49,11 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'));
 });
 
+gulp.task('cname', function () {
+    return gulp.src('./src/CNAME')
+        .pipe(gulp.dest('./dist'));
+});
+
 gulp.task("revision", ["styles", "scripts"], function(){
   return gulp.src(["./dist/**/*.css", "./dist/**/*.js"])
     .pipe(rev())
@@ -77,14 +82,15 @@ gulp.task('watch', function() {
 gulp.task('clean', require('del').bind(null, ['./dist']));
 
 gulp.task('build', function(callback) {
-  runSequence(['images', 'styles', 'scripts'],
-              'html',
+  runSequence('clean',
+              ['images', 'html', 'cname'],
+              'revreplace',
               callback);
 });
 
 gulp.task('default', function(callback) {
   runSequence('clean',
-              ['images', 'html'],
+              ['images', 'html', 'cname'],
               'revreplace',
               callback);
 });
