@@ -25,7 +25,9 @@ gulp.task('html', function () {
 
 gulp.task('styles', function () {
     return gulp.src('./src/styles/**/*.scss')
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.init())
+        .pipe(sass({ outputStyle: 'compressed', sourcemap: true, }).on('error', sass.logError))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/styles'));
 });
 
@@ -33,7 +35,7 @@ gulp.task('scripts', function() {
     return gulp.src('./src/scripts/*.js')
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/scripts'));
 });
 
