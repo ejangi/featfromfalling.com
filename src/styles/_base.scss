@@ -159,6 +159,7 @@ a:focus {
     border-style: solid;
     border-color: transparent;
     text-transform: uppercase;
+    transition: all .5s;
     @media (min-width: $screen-md) {
         padding: 1.2rem 2rem;
     }
@@ -168,4 +169,49 @@ a:focus {
 a.btn-outline {
     color: $brand-grey-medium;
     border-color: $brand-grey-medium;
+    &:hover,
+    &:active {
+        color: white;
+        background-color: $brand-grey-medium;
+    }
+}
+
+.social {
+    display: inline-block;
+    background-color: transparent;
+    border-radius: 100%;
+    width: 44px;
+    height: 44px;
+    padding: 7px;
+    transition: all .5s;
+    img {
+        display: inline-block;
+        opacity: .55;
+        transition: all .5s;
+        max-width: 24px;
+        height: auto;
+    }
+    @media (min-width: $screen-sm) and (orientation : portrait) {
+        width: 68px;
+        height: 68px;
+        padding: 10px;
+        img {
+            max-width: 48px;
+        }
+    }
+    @media (min-width: $screen-md) and (orientation : landscape) {
+        width: 68px;
+        height: 68px;
+        padding: 10px;
+        img {
+            max-width: 48px;
+        }
+    }
+    &:hover,
+    &:active {
+        background-color: $brand-grey-medium;
+        img {
+            opacity: 1;
+        }
+    }
 }
