@@ -1,0 +1,26 @@
+#intro {
+    background: url(../images/manic.jpg) no-repeat bottom center;
+    background-size: contain;
+    height: 100%;
+    .container {
+        height: 100%;
+        padding-top: 30%;
+        padding-bottom: 35%;
+
+        h1 {
+            text-transform: uppercase;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        @media (min-width: $screen-sm) {
+            padding-top: 20%;
+        }
+
+        @media (min-width: $screen-lg) {
+            padding-top: 10%;
+        }
+    }
+}

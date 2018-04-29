@@ -3,21 +3,40 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    font-family: Helvetica, Arial, sans-serif;
-    color: $brand-grey;
-    background-color: white;
-    line-height: 120%;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Spectral', Helvetica, Arial, sans-serif;
+    color: $brand-grey-light;
+    background-color: #151515;
+    line-height: 125%;
 }
 
 h1 {
     margin-bottom: $margin-bottom;
-    font-size: 30pt;
+    line-height: 125%;
+    font-weight: 600;
+    font-size: 24pt;
     color: $brand-grey-medium;
+    @media (min-width: $screen-md) {
+        font-size: 28pt
+    }
+    @media (min-width: $screen-lg) {
+        font-size: 30pt;
+    }
+    @media (min-width: $screen-xl) {
+        font-size: 36pt;
+    }
 }
 
 h2 {
     margin-bottom: $margin-bottom;
+    line-height: 125%;
+    font-weight: 600;
     font-size: 10pt;
     text-transform: uppercase;
     letter-spacing: .2rem;
@@ -29,6 +48,8 @@ h2 {
 
 h3 {
     margin-bottom: $margin-bottom;
+    line-height: 125%;
+    font-weight: 600;
     font-size: 20pt;
     color: $brand-grey-medium;
     line-height: 120%;
@@ -36,6 +57,8 @@ h3 {
 
 h4 {
     margin-bottom: $margin-bottom;
+    line-height: 125%;
+    font-weight: 600;
     font-size: 8pt;
     text-transform: uppercase;
     letter-spacing: .1rem;
@@ -48,7 +71,12 @@ h4 {
 p,
 ul,
 ol {
+    line-height: 125%;
     margin-bottom: $margin-bottom;
+    font-size: 10pt;
+    @media (min-width: $screen-xs) {
+        font-size: 12pt;
+    }
 }
 
 ul,
@@ -118,4 +146,26 @@ a:focus {
             margin-bottom: 5%;
         }
     }
+}
+
+#content {
+    height: 100%;
+}
+
+.btn {
+    display: inline-block;
+    padding: .7rem 1rem;
+    border-width: 3px;
+    border-style: solid;
+    border-color: transparent;
+    text-transform: uppercase;
+    @media (min-width: $screen-md) {
+        padding: 1.2rem 2rem;
+    }
+}
+
+.btn-outline,
+a.btn-outline {
+    color: $brand-grey-medium;
+    border-color: $brand-grey-medium;
 }

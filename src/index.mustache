@@ -11,11 +11,12 @@
         <title>{{ title }}</title>
         <meta name="description" content="{{ description }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Spectral:400,400i,600,600i" rel="stylesheet">
     </head>
     <body>
         <!--[if lt IE 8]><div class="alert alert-warning"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div><![endif]-->
         <div id="content"> 
-            {{> sections/about}}
+            {{> sections/intro}}
         </div>
         <link rel="preload" href="styles/main.css" as="style" onload="this.rel='stylesheet'">
         <script src="scripts/main.js" async defer></script>
