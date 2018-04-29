@@ -11,8 +11,10 @@ var imagemin    =   require('gulp-imagemin');
 var runSequence =   require('run-sequence');
 var del         =   require('del');
 var rename      =   require("gulp-rename");
+var rev         =   require('gulp-rev');
+var revReplace  =   require('gulp-rev-replace');
 
-gulp.task('mustache', function () {
+gulp.task('html', function () {
     return gulp.src("./src/*.mustache")
         .pipe(mustache('./src/site.json',{},{}))
         .pipe(rename(function (path) {
@@ -21,13 +23,13 @@ gulp.task('mustache', function () {
         .pipe(gulp.dest("./dist"));
 });
 
-gulp.task('sass', function () {
+gulp.task('styles', function () {
     return gulp.src('./src/styles/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./dist/styles'));
 });
 
-gulp.task('javascript', function() {
+gulp.task('scripts', function() {
     return gulp.src('./src/scripts/*.js')
         .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
@@ -45,29 +47,45 @@ gulp.task('images', function() {
     .pipe(gulp.dest('./dist/images'));
 });
 
+gulp.task("revision", ["styles", "scripts"], function(){
+  return gulp.src(["./dist/**/*.css", "./dist/**/*.js"])
+    .pipe(rev())
+    .pipe(gulp.dest('./dist'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('./dist'))
+})
+ 
+gulp.task("revreplace", ["revision"], function(){
+  var manifest = gulp.src("./dist/rev-manifest.json");
+ 
+  return gulp.src("./dist/index.html")
+    .pipe(revReplace({manifest: manifest}))
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('watch', function() {
     browserSync({
         server: './dist',
         open: false
     });
-    gulp.watch(['./src/styles/**/*'], ['sass']);
+    gulp.watch(['./src/styles/**/*'], ['styles']);
     gulp.watch(['./src/scripts/**/*'], ['jshint', 'scripts']);
     // gulp.watch(['./src/fonts/**/*'], ['fonts']);
     gulp.watch(['./src/images/**/*'], ['images']);
-    gulp.watch(['./src/**/*.mustache', './src/site.json'], ['mustache']);
+    gulp.watch(['./src/**/*.mustache', './src/site.json'], ['html']);
 });
 
 gulp.task('clean', require('del').bind(null, ['./dist']));
 
 gulp.task('build', function(callback) {
-  runSequence(['images', 'sass', 'javascript'],
-              'mustache',
+  runSequence(['images', 'styles', 'scripts'],
+              'html',
               callback);
 });
 
 gulp.task('default', function(callback) {
   runSequence('clean',
-              ['images', 'sass', 'javascript'],
-              'mustache',
+              ['images', 'html'],
+              'revreplace',
               callback);
 });
