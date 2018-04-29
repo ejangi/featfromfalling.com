@@ -70,11 +70,8 @@ gulp.task('watch', function() {
         server: './dist',
         open: false
     });
-    gulp.watch(['./src/styles/**/*'], ['styles']);
-    gulp.watch(['./src/scripts/**/*'], ['jshint', 'scripts']);
-    // gulp.watch(['./src/fonts/**/*'], ['fonts']);
-    gulp.watch(['./src/images/**/*'], ['images']);
-    gulp.watch(['./src/**/*.mustache', './src/site.json'], ['html']);
+    gulp.watch(['./src/**/*'], ['build']);
+    gulp.watch("./dist/*.html").on('change', browserSync.reload);
 });
 
 gulp.task('clean', require('del').bind(null, ['./dist']));
