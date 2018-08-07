@@ -19,3 +19,9 @@ docker-compose exec gulp bash
 ```
 
 From this command prompt, you can run all your regular [gulp](https://gulpjs.com/) commands.
+
+## Push to GitHub Pages
+
+```
+python ghp-import.py -p ./dist/
+```
