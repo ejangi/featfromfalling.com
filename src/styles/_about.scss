@@ -1,0 +1,17 @@
+#about {
+    background-color: #bbb;
+
+    h2,
+    p {
+        color: #151515;
+    }
+
+    blockquote {
+        padding-left: 2rem;
+        padding-right: 2rem;
+
+        p {
+            font-style: italic;
+        }
+    }
+}

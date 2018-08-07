@@ -1,0 +1,15 @@
+#contact {
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        a {
+            margin: 5px;
+            @media (min-width: $screen-lg) {
+                margin: 10px;
+            }
+        }
+    }
+}

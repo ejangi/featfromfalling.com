@@ -83,14 +83,14 @@ gulp.task('clean', require('del').bind(null, ['./dist']));
 
 gulp.task('build', function(callback) {
   runSequence('clean',
-              ['images', 'html', 'cname'],
+              ['images', 'styles', 'html', 'cname'],
               'revreplace',
               callback);
 });
 
 gulp.task('default', function(callback) {
   runSequence('clean',
-              ['images', 'html', 'cname'],
+              ['images', 'styles', 'html', 'cname'],
               'revreplace',
               callback);
 });
