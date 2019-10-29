@@ -13,6 +13,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Spectral:400,400i,600,600i" rel="stylesheet">
         <link href="styles/main.css" rel="stylesheet">
+        <script async src="scripts/main.js"></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151100614-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-151100614-1');
+        </script>
+
         <meta name="google-site-verification" content="vskC_r9iQoE2aIQRjTYEhj7YEF32Xj4eSqq5-EQ4H2E" />
         <!-- Facebook Open Graph -->
         <meta property="og:locale" content="en_GB"/>
@@ -40,7 +51,6 @@
         <div id="content"> 
             {{> sections/intro}}
             {{> sections/listen}}
-            {{> sections/watch}}
             {{> sections/about}}
             {{> sections/contact}}
         </div>

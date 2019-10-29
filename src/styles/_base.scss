@@ -146,6 +146,21 @@ a:focus {
             margin-bottom: 5%;
         }
     }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        margin-left: -$column-padding;
+        margin-right: -$column-padding;
+    }
+
+    .col-m-6 {
+        width: 50%;
+        padding-left: $column-padding;
+        padding-right: $column-padding;
+    }
 }
 
 #content {
