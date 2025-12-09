@@ -1,5 +1,4 @@
-FROM node:9.11.1
-MAINTAINER James Angus <james@ejangi.com>
+FROM node:22
 
 WORKDIR /usr/src/app
 VOLUME /usr/src/app
