@@ -1,24 +1,9 @@
 (function(window, document){
     function trackClick(e) {
-        var t = e.target,
-            s,
-            label = '';
-        
-        if (t.tagName.toLowerCase() != 'img') {
-            t = t.parentElement;
-        }
-
-        if (t.tagName.toLowerCase() != 'img') {
-            t = t.querySelector('a');
-        }
-
-        s = t.parentNode;
-
-        while(s.className != 'song') {
-            s = s.parentNode;
-        }
-
-        label = t.parentElement.className + ': ' + s.getAttribute('data-name');
+        var link = e.currentTarget,
+            store = link.parentElement,
+            song = link.closest('.song'),
+            label = store.className + ': ' + song.getAttribute('data-name');
 
         gtag('event', 'view_item', {
             'event_category': 'engagement',
@@ -27,7 +12,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', function(e) {
-        var as = document.querySelectorAll('a[href^="https://open.spotify.com"]');
+        var as = document.querySelectorAll('.song .stores a');
 
         for(var i = 0; i < as.length; i++) {
             as[i].addEventListener("click", trackClick, false);
