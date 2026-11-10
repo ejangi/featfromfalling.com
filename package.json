@@ -8,15 +8,12 @@
   "license": "UNLICENSED",
   "dependencies": {
     "browser-sync": "^3.0.4",
-    "del": "^9.0.1",
     "gulp": "^5.0.1",
-    "gulp-concat": "^2.6.1",
     "gulp-mustache": "^5.0.0",
     "gulp-rename": "^2.1.0",
     "gulp-rev": "^12.0.0",
     "gulp-rev-replace": "^0.4.4",
     "gulp-sass": "^6.0.1",
-    "npm-check-updates": "^23.1.1",
     "sass": "^1.108.1"
   }
 }

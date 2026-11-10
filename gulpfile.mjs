@@ -2,10 +2,9 @@ import gulp from "gulp";
 import mustache from "gulp-mustache";
 import gulpSass from "gulp-sass";
 import * as sassCompiler from "sass";
-import concat from "gulp-concat";
 import browserSync from "browser-sync";
 
-import { deleteAsync } from "del";
+import { rm } from "node:fs/promises";
 import rename from "gulp-rename";
 import rev from "gulp-rev";
 import revReplace from "gulp-rev-replace";
@@ -41,9 +40,8 @@ function styles() {
 
 function scripts() {
   return gulp
-    .src("./src/scripts/*.js", { sourcemaps: true })
-    .pipe(concat("main.js"))
-    .pipe(gulp.dest("./dist/scripts", { sourcemaps: "." }));
+    .src("./src/scripts/main.js")
+    .pipe(gulp.dest("./dist/scripts"));
 }
 
 function images() {
@@ -75,7 +73,7 @@ function revreplace() {
 }
 
 function clean() {
-  return deleteAsync(["./dist"]);
+  return rm("./dist", { recursive: true, force: true });
 }
 
 function watchTask() {
