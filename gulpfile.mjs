@@ -3,7 +3,6 @@ import mustache from "gulp-mustache";
 import gulpSass from "gulp-sass";
 import * as sassCompiler from "sass";
 import concat from "gulp-concat";
-import sourcemaps from "gulp-sourcemaps";
 import browserSync from "browser-sync";
 
 import { deleteAsync } from "del";
@@ -30,25 +29,21 @@ function html() {
 
 function styles() {
   return gulp
-    .src("./src/styles/**/*.scss")
-    .pipe(sourcemaps.init())
+    .src("./src/styles/**/*.scss", { sourcemaps: true })
     .pipe(
       sass({ outputStyle: "compressed", sourcemap: true }).on(
         "error",
         sass.logError,
       ),
     )
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest("./dist/styles"));
+    .pipe(gulp.dest("./dist/styles", { sourcemaps: "." }));
 }
 
 function scripts() {
   return gulp
-    .src("./src/scripts/*.js")
-    .pipe(sourcemaps.init())
+    .src("./src/scripts/*.js", { sourcemaps: true })
     .pipe(concat("main.js"))
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest("./dist/scripts"));
+    .pipe(gulp.dest("./dist/scripts", { sourcemaps: "." }));
 }
 
 function images() {
